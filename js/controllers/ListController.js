@@ -77,4 +77,9 @@ angular
 	.module('myApp',[])
 	.controller('listController',['$scope',function($scope){
 		$scope.data = turtlesData;
+		$scope.activeTurtle = {};
+		$scope.changeActiveTurtle = function(turtle){
+			console.log('here');
+			$scope.activeTurtle = turtle;
+		}
 }]);
