@@ -78,6 +78,7 @@ angular
 	.controller('listController',['$scope',function($scope){
 		$scope.data = turtlesData;
 		$scope.activeTurtle = {};
+		$scope.searchKeyword = '';
 		$scope.changeActiveTurtle = function(turtle){
 			console.log('here');
 			$scope.activeTurtle = turtle;
