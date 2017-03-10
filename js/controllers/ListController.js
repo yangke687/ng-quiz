@@ -1,7 +1,7 @@
 var turtlesData = [
         {
             type: "Green Turtle",
-            image_url: "http://www.what-do-turtles-eat.com/wp-content/uploads/2014/10/Sea-Turtles-Habitat.jpg",
+            image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Green_turtle_swimming_over_coral_reefs_in_Kona.jpg/220px-Green_turtle_swimming_over_coral_reefs_in_Kona.jpg",
             locations: "Tropical and subtropical oceans worldwide",
             size: "Up to 1.5m and up to 300kg",
             lifespan: "Over 80 years",
@@ -55,7 +55,7 @@ var turtlesData = [
         },
         {
             type: "Olive Ridley Turtle",
-            image_url: "http://images.nationalgeographic.com/wpf/media-live/photos/000/006/cache/ridley-sea-turtle_688_600x450.jpg",
+            image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Turtle_golfina_escobilla_oaxaca_mexico_claudio_giovenzana_2010.jpg/250px-Turtle_golfina_escobilla_oaxaca_mexico_claudio_giovenzana_2010.jpg",
             locations: "Tropical coastal areas around the world",
             size: "70cm, 45kg",
             lifespan: "50 years",
