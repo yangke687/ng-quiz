@@ -15,13 +15,16 @@
 				<strong>TURTLE QUIZ</strong>
 			</h3>
 		</div>
-		<div ng-controller="listController">
+		<div ng-controller="listController" ng-hide="quizActive">
 			<form class="form-inline well well-sm clearfix">
 				<span class="glyphicon glyphicon-search"></span>
 				<input type="text"
 					placeholder="Search..." 
 					class="form-control"
 					ng-model="searchKeyword" />
+				<button class="btn btn-warning pull-right" ng-click="quizActive=true">
+					<strong>Start the Quiz</strong>
+				</button>
 			</form>
 			<div class="row">
 				<div class="col-sm-6" ng-repeat="turtle in data | filter:searchKeyword">
