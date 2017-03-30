@@ -81,7 +81,16 @@
 		<!-- list controller -->
 
 		<div ng-controller="quizController" ng-show="quizMetrics.quizActive">
-			<h1>Quiz</h1>
+			<div class="row">
+				<div class="col-xs-8">
+					<h4>Progress:</h4>
+					<div class="btn-toolbar">
+						<button class="btn" ng-repeat="question in dataService.quizQuestions" ng-class="{'btn-info':question.selected!==null,'btn-danger':question.selected===null}">
+							<span class="glyphicon" ng-class="{'glyphicon-pencil':question.selected!==null,'glyphicon-question-sign':question.selected===null}"></span>
+						</button>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 	<script src="https://code.angularjs.org/1.6.3/angular.min.js"></script>

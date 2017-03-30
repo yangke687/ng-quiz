@@ -1,3 +1,6 @@
-module.controller('quizController', ['quizMetrics', '$scope', function(quizMetrics, $scope) {
-	$scope.quizMetrics = quizMetrics;
-}]);
+module.controller('quizController', ['dataService', 'quizMetrics', '$scope',
+	function(dataService, quizMetrics, $scope) {
+		$scope.quizMetrics = quizMetrics;
+		$scope.dataService = dataService;
+	}
+]);
