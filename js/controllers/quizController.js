@@ -7,7 +7,11 @@ module.controller('quizController', ['dataService', 'quizMetrics', '$scope',
 		var numQuestionsAnswered = 0;
 
 
-		$scope.setActiveQuestion = function() {
+		$scope.setActiveQuestion = function(idx) {
+			if (typeof idx !== undefined) {
+				$scope.activeQuestion = idx;
+				return;
+			}
 			var breakout = false;
 			var quizLength = dataService.quizQuestions.length - 1;
 			// skip out questions
