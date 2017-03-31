@@ -3,6 +3,8 @@ module.controller('quizController', ['dataService', 'quizMetrics', '$scope',
 		$scope.quizMetrics = quizMetrics;
 		$scope.dataService = dataService;
 		$scope.activeQuestion = 0;
+		$scope.error = false;
+		$scope.finalise = false;
 
 		var numQuestionsAnswered = 0;
 
@@ -17,6 +19,9 @@ module.controller('quizController', ['dataService', 'quizMetrics', '$scope',
 			// skip out questions
 			while (!breakout) {
 				$scope.activeQuestion = $scope.activeQuestion < quizLength ? ++$scope.activeQuestion : 0;
+				if ($scope.activeQuestion === 0) {
+					$scope.error = true;
+				}
 				console.log($scope.activeQuestion);
 				if (dataService.quizQuestions[$scope.activeQuestion].selected === null) {
 					breakout = true;
@@ -27,16 +32,34 @@ module.controller('quizController', ['dataService', 'quizMetrics', '$scope',
 		$scope.questionAnswered = function() {
 
 			var quizLength = dataService.quizQuestions.length;
-
-			if (dataService.quizQuestions[$scope.activeQuestion].selected === null) {
-				numQuestionsAnswered++;
-				if (numQuestionsAnswered >= quizLength) {
-					// finalise quiz
-
+			var allAnswered = true;
+			for (var i = 0; i < quizLength; i++) {
+				if (dataService.quizQuestions[i].selected === null) {
+					allAnswered = false;
+					break;
 				}
 			}
 
-			$scope.setActiveQuestion();
+			if (dataService.quizQuestions[$scope.activeQuestion].selected === null) {
+				numQuestionsAnswered++;
+				console.log('numQuestionsAnswered:', numQuestionsAnswered);
+				if (numQuestionsAnswered >= quizLength) {
+					// finalise quiz
+					for (var i = 0; i < quizLength; i++) {
+						if (dataService.quizQuestions[i].selected === null) {
+							$scope.setActiveQuestion(i);
+							return;
+						}
+					}
+					// all the questions has been answered !
+					$scope.error = false;
+					$scope.finalise = true;
+					return;
+				}
+			}
+
+			if (!allAnswered)
+				$scope.setActiveQuestion();
 		}
 
 		$scope.selectAnswer = function(idx) {
