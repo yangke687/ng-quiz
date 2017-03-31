@@ -1,8 +1,11 @@
-module.service('quizMetrics', function() {
+module.service('quizMetrics', ['dataService', function(dataService) {
 	console.log("init services");
 	var obj = {
 		quizActive: true,
 		resultsActive: false,
+		correctAnswers: [],
+		numCorrect: 0,
+
 		changeState: function(metric, state) {
 			if (metric === 'quiz') {
 				this.quizActive = state;
@@ -13,8 +16,16 @@ module.service('quizMetrics', function() {
 			}
 		},
 		markQuiz: function() {
-
+			this.correctAnswers = dataService.correctAnswers;
+			for (var i = 0; i < dataService.quizQuestions.length; i++) {
+				if (dataService.quizQuestions[i].selected === this.correctAnswers[i]) {
+					dataService.quizQuestions[i].correct = true;
+					this.numCorrect++;
+				} else {
+					dataService.quizQuestions[i].correct = false;
+				}
+			}
 		}
 	};
 	return obj;
-});
+}]);
