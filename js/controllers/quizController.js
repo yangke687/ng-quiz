@@ -34,5 +34,9 @@ module.controller('quizController', ['dataService', 'quizMetrics', '$scope',
 
 			$scope.setActiveQuestion();
 		}
+
+		$scope.selectAnswer = function(idx) {
+			dataService.quizQuestions[$scope.activeQuestion].selected = idx;
+		}
 	}
 ]);
