@@ -8,7 +8,7 @@ module.controller('quizController', ['dataService', 'quizMetrics', '$scope',
 
 
 		$scope.setActiveQuestion = function(idx) {
-			if (typeof idx !== undefined) {
+			if (idx !== undefined) {
 				$scope.activeQuestion = idx;
 				return;
 			}
