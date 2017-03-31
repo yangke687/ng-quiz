@@ -7,7 +7,7 @@ module.controller('listController', ['dataService', 'quizMetrics', '$scope',
         //
         $scope.quizMetrics = quizMetrics;
         $scope.activatedQuiz = function() {
-            $scope.quizMetrics.changeState(true);
+            $scope.quizMetrics.changeState('quiz', true);
         }
 
         $scope.changeActiveTurtle = function(turtle) {

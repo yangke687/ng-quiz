@@ -58,12 +58,25 @@ module.controller('quizController', ['dataService', 'quizMetrics', '$scope',
 				}
 			}
 
-			if (!allAnswered)
+			if (!allAnswered) {
 				$scope.setActiveQuestion();
+			} else {
+				$scope.error = false;
+				$scope.finalise = true;
+			}
 		}
 
 		$scope.selectAnswer = function(idx) {
 			dataService.quizQuestions[$scope.activeQuestion].selected = idx;
+		}
+
+		$scope.finaliseAnswers = function() {
+			$scope.finalise = false;
+			numQuestionsAnswered = 0;
+			$scope.activeQuestion = 0;
+			quizMetrics.markQuiz();
+			quizMetrics.changeState('quiz', false);
+			quizMetrics.changeState('results', true);
 		}
 	}
 ]);
