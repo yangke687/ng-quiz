@@ -1,5 +1,4 @@
 module.service('quizMetrics', ['dataService', function(dataService) {
-	console.log("init services");
 	var obj = {
 		quizActive: true,
 		resultsActive: false,

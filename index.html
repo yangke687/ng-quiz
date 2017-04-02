@@ -15,7 +15,7 @@
 				<strong>TURTLE QUIZ</strong>
 			</h3>
 		</div>
-		<div ng-controller="listController" ng-hide="quizMetrics.quizActive">
+		<div ng-controller="listController" ng-hide="quizMetrics.quizActive || quizMetrics.resultsActive">
 			<form class="form-inline well well-sm clearfix">
 				<span class="glyphicon glyphicon-search"></span>
 				<input type="text"
@@ -157,6 +157,39 @@
 					</div>
 				</div>
 			</div>
+		</div><!-- end of quizController -->
+
+		<div ng-controller="resultController" ng-show="quizMetrics.resultsActive">
+			<div class="row">
+				<div class="col-xs-8">
+					<h2>Results:</h2>
+					<div class="btn-toolbar">
+						<button class="btn" 
+							ng-click="setActiveQuestion($index);"
+							ng-repeat="question in dataService.quizQuestions"
+							ng-class="{'btn-success':question.correct,'btn-danger':!question.correct}">
+							<span class="glyphicon" ng-class="{'glyphicon-ok':question.correct,'glyphicon-remove':!question.correct}"></span>
+						</button>
+					</div>
+				</div>
+				<div class="col-xs-4">
+					<div class="row">
+						<h4>Legend:</h4>
+						<div class="col-sm-4">
+							<button class="btn btn-success">
+								<span class="glyphicon glyphicon-ok"></span>
+							</button>
+							<p>Correct</p>
+						</div>
+						<div class="col-sm-4">
+							<button class="btn btn-danger">
+								<span class="glyphicon glyphicon-remove"></span>
+							</button>
+							<p>Incorrect</p>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 	<script src="https://code.angularjs.org/1.6.3/angular.min.js"></script>
@@ -167,5 +200,6 @@
 	<script src="js/factories/quizMetrics.js"></script>
 	<script src="js/controllers/ListController.js"></script>
 	<script src="js/controllers/quizController.js"></script>
+	<script src="js/controllers/resultController.js"></script>
 </body>
 </html>
