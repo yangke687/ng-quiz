@@ -12,4 +12,7 @@ module.controller('resultController', ['quizMetrics', 'dataService', '$scope', f
 			return 'bg-danger';
 		}
 	};
+	$scope.calculatePerc = function() {
+		return quizMetrics.numCorrect / dataService.quizQuestions.length * 100;
+	}
 }]);
