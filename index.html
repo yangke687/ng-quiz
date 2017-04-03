@@ -195,7 +195,7 @@
 			<div class="row">
 				<div class="col-xs-12 top-buffer">
 					<h2>You Scored {{quizMetrics.numCorrect}} / {{dataService.quizQuestions.length}}</h2>
-					<h2><strong>{{ calculatePerc() }}%</strong></h2>
+					<h2><strong>{{ calculatePerc() | number: 2 }}%</strong></h2>
 				</div>
 			</div>
 
@@ -205,7 +205,7 @@
 					<div class="row">
 						<div class="col-xs-12">
 							<h4>{{activeQuestion+1+'. '+dataService.quizQuestions[activeQuestion].text}}</h4>
-							<div class="row">
+							<div class="row" ng-if="dataService.quizQuestions[activeQuestion].type == 'text'">
 								<div class="col-sm-6" ng-repeat="answer in dataService.quizQuestions[activeQuestion].possibilities">
 									<h4 class="answer"
 										ng-class="getAnswerClass($index);"
@@ -215,8 +215,17 @@
 									</h4>
 								</div>
 							</div>
+							<!-- end of row -->
+							<div class="row" ng-if="dataService.quizQuestions[activeQuestion].type === 'image'">
+								<div class="col-sm-6" ng-repeat="answer in dataService.quizQuestions[activeQuestion].possibilities">
+									<div class="image-answer" ng-class="getAnswerClass($index);">
+										<img ng-src="{{answer.answer}}" alt="">
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
+					<!-- end of row -->
 				</div>
 			</div>
 		</div>
