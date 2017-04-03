@@ -15,4 +15,14 @@ module.controller('resultController', ['quizMetrics', 'dataService', '$scope', f
 	$scope.calculatePerc = function() {
 		return quizMetrics.numCorrect / dataService.quizQuestions.length * 100;
 	}
+	$scope.reset = function() {
+		quizMetrics.changeState('results', false);
+		quizMetrics.numCorrect = 0;
+		for (var i = 0; i < dataService.quizQuestions.length; i++) {
+			//console.log(dataService.quizQuestions[i]);
+			dataService.quizQuestions[i].selected = null;
+			dataService.quizQuestions[i].correct = null;
+		}
+		//console.log(dataService);
+	}
 }]);
