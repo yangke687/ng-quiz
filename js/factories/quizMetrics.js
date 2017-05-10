@@ -1,6 +1,6 @@
 module.service('quizMetrics', ['dataService', function(dataService) {
 	var obj = {
-		quizActive: true,
+		quizActive: false,
 		resultsActive: false,
 		correctAnswers: [],
 		numCorrect: 0,

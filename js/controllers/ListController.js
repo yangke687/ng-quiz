@@ -1,7 +1,7 @@
 module.controller('listController', ['dataService', 'quizMetrics', '$scope',
     function(dataService, quizMetrics, $scope) {
         $scope.data = dataService.turtlesData;
-        console.log($scope.data);
+        //console.log($scope.data);
         $scope.activeTurtle = {};
         $scope.searchKeyword = '';
         //
